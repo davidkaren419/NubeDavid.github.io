@@ -5,6 +5,60 @@
   <title>Papelería "Papelería rosa"</title>
   <style>
     :root{
+      .btn-edit {
+    background: #ffaad9;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: 0.2s;
+}
+
+.btn-edit:hover {
+    background: #ff7fc4;
+    transform: scale(1.05);
+}
+
+.btn-edit:active {
+    transform: scale(0.95);
+}
+
+      .btn-actualizar {
+    background: linear-gradient(135deg, #ffaad9, #ff7fc4);
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 14px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    transition: 0.25s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(255, 130, 180, 0.35);
+}
+
+/* Icono opcional */
+.btn-actualizar::before {
+    content: "✎"; /* Ícono lápiz */
+    font-size: 15px;
+}
+
+.btn-actualizar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px rgba(255, 130, 180, 0.45);
+}
+
+.btn-actualizar:active {
+    transform: scale(0.95);
+}
+
       /* Botón Finalizar Compra */
 .btn-finalizar {
   background: linear-gradient(135deg, #ffa6d1, #ff74b8);
@@ -142,6 +196,7 @@
 
 
 
+
       </div>
     </div>
   </header>
@@ -151,6 +206,35 @@
       <h2>вιєηνєηι∂σ α ℓα ραρєℓєяια яσѕα 𓏲 ๋࣭ ࣪ ˖🎐 </h2>
       <p>Encuentra los artículos esenciales: útiles escolares, material de oficina y más. Selecciona productos y agrégalos al carrito.</p>
     </section>
+<div style="text-align:center; margin-top:20px;">
+    <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Buscar producto..." 
+        style="
+            width: 50%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 2px solid #ff7eb3;
+        "
+    >
+    <button 
+        id="searchBtn"
+        style="
+            padding: 10px 18px;
+            margin-left: 8px;
+            background: #ff7eb3;
+            border: none;
+            color: white;
+            font-size: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+        "
+    >
+        Buscar
+    </button>
+</div>
 
     <section id="prods">
       <h3 style="margin-top:18px">Productos destacados (20)</h3>
@@ -187,153 +271,27 @@
     </footer>
   </main>
 
-  <script>
-// Productos
-const productos = [
-  {
-    id: 1,
-    nombre: "Cuaderno profesional",
-    desc: "100 hojas raya",
-    precio: 45,
-    img: "Cuaderno.jpg"
-  },
-  {
-    id: 2,
-    nombre: "Pluma negra",
-    desc: "Punta fina",
-    precio: 12,
-    img: "pluma.jpg"
-  },
-  {
-    id: 3,
-    nombre: "Lápiz del Nº2",
-    desc: "Madera premium",
-    precio: 6,
-    img: "lapiz.jpg"
-  },
-  {
-    id: 4,
-    nombre: "Borrador blanco",
-    desc: "Suave y sin manchas",
-    precio: 10,
-    img: "goma.jpg"
-  },
-  {
-    id: 5,
-    nombre: "Tijeras escolares",
-    desc: "Punta roma",
-    precio: 25,
-    img: "tijeras.jpg"
-  },
-  {
-    id: 6,
-    nombre: "Regla 30 cm",
-    desc: "Plástica",
-    precio: 17,
-    img: "regla.jpg"
-  },
-  {
-    id: 7,
-    nombre: "Pegamento en barra",
-    desc: "20 g",
-    precio: 15,
-    img: "prit.jpg"
-  },
-  {
-    id: 8,
-    nombre: "Marcador negro",
-    desc: "Permanente",
-    precio: 18,
-    img: "marcador.jpg"
-  },
-  {
-    id: 9,
-    nombre: "Colores 12 pzas",
-    desc: "Caja escolar",
-    precio: 35,
-    img: "colores.jpg"
-  },
-  {
-    id: 10,
-    nombre: "Folder tamaño carta",
-    desc: "Color azul",
-    precio: 5,
-    img: "folder.jpg"
-  },
-  {
-    id: 11,
-    nombre: "Engrapadora mini",
-    desc: "Incluye grapas",
-    precio: 32,
-    img: "engrapadora.jpg"
-  },
-  {
-    id: 12,
-    nombre: "Paquete de grapas",
-    desc: "Caja 500 pzas",
-    precio: 30,
-    img: "grapas.jpg"
-  },
-  {
-    id: 13,
-    nombre: "Corrector líquido",
-    desc: "Alta cobertura",
-    precio: 20,
-    img: "corrector.jpg"
-  },
-  {
-    id: 14,
-    nombre: "Cartulina blanca",
-    desc: "Tamaño carta",
-    precio: 8,
-    img: "cartulina.jpg"
-  },
-  {
-    id: 15,
-    nombre: "Plumas de colores",
-    desc: "Paquete 10 pzas",
-    precio: 30,
-    img: "plumas.jpg"
-  },
-  {
-    id: 16,
-    nombre: "Block de notas",
-    desc: "Color amarillo",
-    precio: 18,
-    img: "block.jpg"
-  },
-  {
-    id: 17,
-    nombre: "Bolsa de clips",
-    desc: "50 piezas",
-    precio: 12,
-    img: "clips.jpg"
-  },
-  {
-    id: 18,
-    nombre: "Calculadora básica",
-    desc: "8 dígitos",
-    precio: 50,
-    img: "calculadora.jpg"
-  },
-  {
-    id: 19,
-    nombre: "Marcatextos amarillo",
-    desc: "Punta biselada",
-    precio: 16,
-    img: "marcatextos.jpg"
-  },
-  {
-    id: 20,
-    nombre: "Hoja tamaño carta",
-    desc: "Paquete 100 hojas",
-    precio: 40,
-    img: "hojas.jpg"
-  }
-];
+<script>
+/* ---------- Productos (vienen desde productos.php) ---------- */
+let productos = [];
 
+fetch("productos.php")
+  .then(res => {
+    if (!res.ok) throw new Error("Error al obtener productos: " + res.status);
+    return res.json();
+  })
+  .then(data => {
+    productos = data;
+    mostrarProductos();
+  })
+  .catch(err => {
+    console.error(err);
+    // opcional: mostrar mensaje al usuario
+    const grid = document.getElementById("productsGrid");
+    if (grid) grid.innerHTML = "<p style='color:#b00020'>No se pudieron cargar los productos.</p>";
+  });
 
-
+/* ---------- Elementos globales ---------- */
 const grid = document.getElementById('productsGrid');
 const cartCountEl = document.getElementById('cartCount');
 const overlay = document.getElementById('loginOverlay');
@@ -341,19 +299,96 @@ const loginBtn = document.getElementById('btnLogin');
 const loginForm = document.getElementById('loginForm');
 const loginError = document.getElementById('loginError');
 
-const cart = new Map();
+const cart = new Map(); // id -> cantidad
 
+/* ---------- Funciones de edición (overlay) ---------- */
+function editarProducto(id) {
+  const p = productos.find(item => Number(item.id) === Number(id));
+  if (!p) {
+    console.error("Producto no encontrado para editar:", id);
+    return;
+  }
+
+  // Asegúrate de que los campos y overlay existan en el DOM
+  const editOverlay = document.getElementById("editOverlay");
+  const editId = document.getElementById("editId");
+  const editNombre = document.getElementById("editNombre");
+  const editDesc = document.getElementById("editDesc");
+  const editPrecio = document.getElementById("editPrecio");
+
+  if (!editOverlay || !editId || !editNombre || !editDesc || !editPrecio) {
+    console.error("Campos de edición faltan en el DOM.");
+    return;
+  }
+
+  editId.value = p.id;
+  editNombre.value = p.nombre || "";
+  editDesc.value = p.descripcion || p.desc || "";
+  editPrecio.value = p.precio || 0;
+
+  editOverlay.style.display = "flex";
+}
+
+function cerrarEditar() {
+  const editOverlay = document.getElementById("editOverlay");
+  if (editOverlay) editOverlay.style.display = "none";
+}
+
+/* ---------- Mostrar productos (diseño .card) ---------- */
+function mostrarProductos() {
+  const grid = document.getElementById("productsGrid");
+  if (!grid) {
+    console.error("No existe el elemento #productsGrid en el DOM.");
+    return;
+  }
+  grid.innerHTML = "";
+
+  productos.forEach(p => {
+    // Aseguramos las propiedades por si vienen con otros nombres
+    const img = p.img || p.image || "placeholder.png";
+    const nombre = p.nombre || p.name || "Sin nombre";
+    const desc = p.descripcion || p.desc || p.description || "";
+    const precio = Number(p.precio || p.price || 0).toFixed(2);
+
+    grid.innerHTML += `
+      <article class="card" data-id="${p.id}">
+        <div class="thumb">
+          <img src="${img}" alt="${nombre}" class="prod-img">
+        </div>
+
+        <div class="prod-title">${nombre}</div>
+
+        <div style="font-size:13px;color:var(--muted)">
+          ${desc}
+        </div>
+
+        <div style="margin-top:8px;display:flex;align-items:center;justify-content:space-between">
+          <div class="price">$${precio}</div>
+
+          <div style="display:flex;gap:8px;align-items:center">
+            <button class="btn-small add" data-id="${p.id}" aria-label="Añadir ${nombre}">Añadir</button>
+            <button class="btn-small remove" data-id="${p.id}" aria-label="Quitar ${nombre}">Quitar</button>
+            <button class="btn-edit" data-id="${p.id}" title="Editar">✏</button>
+          </div>
+        </div>
+      </article>
+    `;
+  });
+}
+
+/* ---------- Carrito: actualización UI ---------- */
 function updateCartUI(){
   let totalItems = 0;
   let totalPrice = 0;
   for(const [id, qty] of cart.entries()){
     totalItems += qty;
-    const prod = productos.find(p=>p.id===id);
-    if(prod) totalPrice += prod.precio * qty;
+    const prod = productos.find(p => Number(p.id) === Number(id));
+    if(prod) totalPrice += Number(prod.precio || prod.price || 0) * qty;
   }
   cartCountEl.textContent = `Carrito: ${totalItems} — Total: $${totalPrice.toFixed(2)}`;
 }
 
+/* ---------- Eliminar / disminuir del carrito ---------- */
 function removeFromCart(id){
   if(!cart.has(id)) return;
   const current = cart.get(id);
@@ -362,43 +397,32 @@ function removeFromCart(id){
   updateCartUI();
 }
 
+/* ---------- Delegación de eventos en el grid ---------- */
+grid.addEventListener('click', (e) => {
+  // Prioridad: si hacen click en el botón EDIT (o su icono)
+  const btnEdit = e.target.closest('.btn-edit');
+  if (btnEdit) {
+    const id = btnEdit.dataset.id || btnEdit.getAttribute('data-id');
+    // si no tiene dataset, puede venir del atributo creado en innerHTML
+    editarProducto(id);
+    return;
+  }
 
-grid.innerHTML = '';
-productos.forEach(p=>{
-  const card = document.createElement('article');
-  card.className = 'card';
-  card.innerHTML = `
-<div class="thumb">
-  <img src="${p.img}" alt="${p.nombre}" class="prod-img">
-</div>
-<div class="prod-title">${p.nombre}</div>
-<div style="font-size:13px;color:var(--muted)">${p.desc}</div>
-<div style="margin-top:8px;display:flex;align-items:center;justify-content:space-between">
-  <div class="price">$${p.precio.toFixed(2)}</div>
-  <div style="display:flex;gap:8px">
-    <button class="btn-small add" data-id="${p.id}" aria-label="Añadir ${p.nombre}">Añadir</button>
-    <button class="btn-small remove" data-id="${p.id}" aria-label="Quitar ${p.nombre}">Quitar</button>
-  </div>
-</div>
-
-  `;
-  grid.appendChild(card);
-});
-
-
-grid.addEventListener('click', (e)=>{
   const addBtn = e.target.closest('button.add');
   if(addBtn){
     const id = Number(addBtn.dataset.id);
+    if (!id) return;
     cart.set(id, (cart.get(id)||0)+1);
     updateCartUI();
     addBtn.textContent = '✓ Añadido';
     setTimeout(()=> addBtn.textContent = 'Añadir',900);
     return;
   }
+
   const remBtn = e.target.closest('button.remove');
   if(remBtn){
     const id = Number(remBtn.dataset.id);
+    if (!id) return;
     removeFromCart(id);
     remBtn.textContent = '−';
     setTimeout(()=> remBtn.textContent = 'Quitar',600);
@@ -406,56 +430,64 @@ grid.addEventListener('click', (e)=>{
   }
 });
 
-
+/* ---------- Login (mantengo tu lógica) ---------- */
 function succeedLogin(){
-  overlay.style.display = 'none';
-  overlay.setAttribute('aria-hidden','true');
+  if (overlay) {
+    overlay.style.display = 'none';
+    overlay.setAttribute('aria-hidden','true');
+  }
 }
 
+if (loginForm) {
+  loginForm.addEventListener('submit', (ev)=>{
+    ev.preventDefault();
+    const u = document.getElementById('username').value.trim();
+    const p = document.getElementById('password').value.trim();
+    if(u === 'rosa' && p === 'lesserafim'){
+      succeedLogin();
+    } else {
+      if (loginError) loginError.style.display = 'block';
+      setTimeout(()=> { if (loginError) loginError.style.display = 'none'; }, 2200);
+    }
+  });
+}
+if (loginBtn) {
+  loginBtn.addEventListener('click', (ev)=>{
+    ev.preventDefault();
+    if (loginForm) loginForm.dispatchEvent(new Event('submit', {cancelable: true, bubbles: true}));
+  });
+}
 
-loginForm.addEventListener('submit', (ev)=>{
-  ev.preventDefault();
-  const u = document.getElementById('username').value.trim();
-  const p = document.getElementById('password').value.trim();
-  if(u === 'rosa' && p === 'lesserafim'){
-    succeedLogin();
-  } else {
-    loginError.style.display = 'block';
-    setTimeout(()=> loginError.style.display = 'none', 2200);
-  }
-});
-
-// También responder a clic en el botón (por accesibilidad)
-loginBtn.addEventListener('click', (ev)=>{
-  ev.preventDefault();
-  loginForm.dispatchEvent(new Event('submit', {cancelable: true, bubbles: true}));
-});
-
-
+/* ---------- Inicializar UI ---------- */
 updateCartUI();
 
+/* ---------- Finalizar compra (envío) ---------- */
 function enviarCompra() {
+  if (cart.size === 0) {
+    alert("El carrito está vacío.");
+    return;
+  }
+
   const productosEnviar = [];
 
   for (const [id, qty] of cart.entries()) {
-    const p = productos.find(prod => prod.id === id);
+    const p = productos.find(prod => Number(prod.id) === Number(id));
+    if (!p) continue;
     productosEnviar.push({
       id: p.id,
-      nombre: p.nombre,
-      precio: p.precio,
+      nombre: p.nombre || p.name,
+      precio: Number(p.precio || p.price || 0),
       cantidad: qty
     });
   }
 
-  let total = 0;
-  productosEnviar.forEach(p => total += p.precio * p.cantidad);
+  let total = productosEnviar.reduce((s, it) => s + (it.precio * it.cantidad), 0);
 
-  
+  // Crear formulario y enviarlo
   const form = document.createElement("form");
   form.method = "POST";
-  form.action = "guardar_venta_normal.php"; 
+  form.action = "guardar_venta_normal.php";
 
-  
   const inputProductos = document.createElement("input");
   inputProductos.type = "hidden";
   inputProductos.name = "productos";
@@ -470,10 +502,58 @@ function enviarCompra() {
   form.appendChild(inputTotal);
   document.body.appendChild(form);
 
-  form.submit(); 
+  form.submit();
 }
 
-
+/* ---------- Exporto funciones al scope global para que onclick inline funcione si lo usas ---------- */
+window.editarProducto = editarProducto;
+window.cerrarEditar = cerrarEditar;
+window.enviarCompra = enviarCompra;
 </script>
+
+<script>
+document.getElementById("searchBtn").addEventListener("click", function () {
+
+    let filtro = document.getElementById("searchInput").value.toLowerCase();
+
+    // Productos reales en pantalla
+    let productos = document.querySelectorAll("#productsGrid .card");
+
+    productos.forEach(p => {
+        let nombre = p.querySelector(".prod-title").textContent.toLowerCase();
+
+        if (nombre.includes(filtro) || filtro.trim() === "") {
+            p.style.display = "block";
+        } else {
+            p.style.display = "none";
+        }
+    });
+
+});
+</script>
+<div id="editOverlay" class="overlay" style="display:none;">
+  <div class="login-card">
+      <h2>Actualizar producto</h2>
+
+      <form id="editForm" method="POST" action="actualizar.php">
+          <input type="hidden" id="editId" name="id">
+
+          <label>Nombre:</label>
+          <input type="text" id="editNombre" name="nombre" required>
+
+          <label>Descripción:</label>
+          <input type="text" id="editDesc" name="descripcion" required>
+
+          <label>Precio:</label>
+          <input type="number" id="editPrecio" name="precio" step="0.01" required>
+
+          <button class="primary">Guardar cambios</button>
+      </form>
+
+      <button onclick="cerrarEditar()" style="margin-top:10px;">Cancelar</button>
+  </div>
+</div>
+
+
 </body>
 </html>
