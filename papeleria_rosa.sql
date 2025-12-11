@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-12-2025 a las 16:35:11
+-- Tiempo de generación: 11-12-2025 a las 20:09:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -24,12 +24,52 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  `precio` decimal(10,2) DEFAULT NULL,
+  `img` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `img`) VALUES
+(1, 'Cuaderno profesional', '100 hojas raya', 60.00, 'Cuaderno.jpg'),
+(2, 'Pluma negra', 'Punta fina', 12.00, 'pluma.jpg'),
+(3, 'Lápiz del Nº2', 'Madera premium', 6.00, 'lapiz.jpg'),
+(4, 'Borrador blanco', 'Suave y sin manchas', 10.00, 'goma.jpg'),
+(5, 'Tijeras escolares', 'Punta roma', 25.00, 'tijeras.jpg'),
+(6, 'Regla 30 cm', 'Plástica', 17.00, 'regla.jpg'),
+(7, 'Pegamento en barra', '20 g', 15.00, 'prit.jpg'),
+(8, 'Marcador negro', 'Permanente', 18.00, 'marcador.jpg'),
+(9, 'Colores 12 pzas', 'Caja escolar', 35.00, 'colores.jpg'),
+(10, 'Folder tamaño carta', 'Color azul', 5.00, 'folder.jpg'),
+(11, 'Engrapadora mini', 'Incluye grapas', 32.00, 'engrapadora.jpg'),
+(12, 'Paquete de grapas', 'Caja 500 pzas', 30.00, 'grapas.jpg'),
+(13, 'Corrector líquido', 'Alta cobertura', 20.00, 'corrector.jpg'),
+(14, 'Cartulina blanca', 'Tamaño carta', 8.00, 'cartulina.jpg'),
+(15, 'Plumas de colores', 'Paquete 10 pzas', 30.00, 'plumas.jpg'),
+(16, 'Block de notas', 'Color amarillo', 18.00, 'block.jpg'),
+(17, 'Bolsa de clips', '50 piezas', 12.00, 'clips.jpg'),
+(18, 'Calculadora básica', '8 dígitos', 50.00, 'calculadora.jpg'),
+(19, 'Marcatextos amarillo', 'Punta biselada', 16.00, 'marcatextos.jpg'),
+(20, 'Hoja tamaño carta', 'Paquete 100 hojas', 40.00, 'hojas.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `ventas`
 --
 
 CREATE TABLE `ventas` (
   `id` int(11) NOT NULL,
-  `productos` text NOT NULL,
+  `productos` longtext NOT NULL,
   `total` decimal(10,2) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -39,24 +79,19 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`id`, `productos`, `total`, `fecha`) VALUES
-(1, 'null', 0.00, '2025-12-03 14:52:23'),
-(2, 'null', 0.00, '2025-12-03 14:53:12'),
-(3, 'null', 0.00, '2025-12-03 14:55:12'),
-(4, 'null', 0.00, '2025-12-03 14:57:43'),
-(5, '[{\"id\":2,\"nombre\":\"Pluma negra\",\"precio\":12,\"cantidad\":1}]', 12.00, '2025-12-03 15:08:29'),
-(6, '[{\"id\":3,\"nombre\":\"L\\u00e1piz del N\\u00ba2\",\"precio\":6,\"cantidad\":1},{\"id\":4,\"nombre\":\"Borrador blanco\",\"precio\":10,\"cantidad\":1}]', 16.00, '2025-12-03 15:09:01'),
-(7, '[{\"id\":2,\"nombre\":\"Pluma negra\",\"precio\":12,\"cantidad\":1},{\"id\":3,\"nombre\":\"L\\u00e1piz del N\\u00ba2\",\"precio\":6,\"cantidad\":1}]', 18.00, '2025-12-03 15:12:25'),
-(8, '[{\"id\":3,\"nombre\":\"L\\u00e1piz del N\\u00ba2\",\"precio\":6,\"cantidad\":1},{\"id\":4,\"nombre\":\"Borrador blanco\",\"precio\":10,\"cantidad\":1}]', 16.00, '2025-12-03 17:02:26'),
-(9, '[{\"id\":2,\"nombre\":\"Pluma negra\",\"precio\":12,\"cantidad\":1},{\"id\":3,\"nombre\":\"L\\u00e1piz del N\\u00ba2\",\"precio\":6,\"cantidad\":1},{\"id\":4,\"nombre\":\"Borrador blanco\",\"precio\":10,\"cantidad\":1}]', 28.00, '2025-12-04 17:42:45'),
-(10, '[{\"id\":1,\"nombre\":\"Cuaderno profesional\",\"precio\":45,\"cantidad\":3},{\"id\":2,\"nombre\":\"Pluma negra\",\"precio\":12,\"cantidad\":1},{\"id\":3,\"nombre\":\"L\\u00e1piz del N\\u00ba2\",\"precio\":6,\"cantidad\":1},{\"id\":4,\"nombre\":\"Borrador blanco\",\"precio\":10,\"cantidad\":1},{\"id\":5,\"nombre\":\"Tijeras escolares\",\"precio\":25,\"cantidad\":1},{\"id\":6,\"nombre\":\"Regla 30 cm\",\"precio\":17,\"cantidad\":1},{\"id\":7,\"nombre\":\"Pegamento en barra\",\"precio\":15,\"cantidad\":1},{\"id\":8,\"nombre\":\"Marcador negro\",\"precio\":18,\"cantidad\":1},{\"id\":12,\"nombre\":\"Paquete de grapas\",\"precio\":30,\"cantidad\":1},{\"id\":16,\"nombre\":\"Block de notas\",\"precio\":18,\"cantidad\":1},{\"id\":15,\"nombre\":\"Plumas de colores\",\"precio\":30,\"cantidad\":1},{\"id\":14,\"nombre\":\"Cartulina blanca\",\"precio\":8,\"cantidad\":1},{\"id\":13,\"nombre\":\"Corrector l\\u00edquido\",\"precio\":20,\"cantidad\":1},{\"id\":9,\"nombre\":\"Colores 12 pzas\",\"precio\":35,\"cantidad\":1},{\"id\":10,\"nombre\":\"Folder tama\\u00f1o carta\",\"precio\":5,\"cantidad\":1},{\"id\":17,\"nombre\":\"Bolsa de clips\",\"precio\":12,\"cantidad\":2},{\"id\":18,\"nombre\":\"Calculadora b\\u00e1sica\",\"precio\":50,\"cantidad\":1},{\"id\":20,\"nombre\":\"Hoja tama\\u00f1o carta\",\"precio\":40,\"cantidad\":1}]', 498.00, '2025-12-04 17:56:04'),
-(11, '[{\"id\":4,\"nombre\":\"Borrador blanco\",\"precio\":10,\"cantidad\":1},{\"id\":3,\"nombre\":\"L\\u00e1piz del N\\u00ba2\",\"precio\":6,\"cantidad\":1}]', 16.00, '2025-12-04 19:17:59'),
-(12, '[{\"id\":2,\"nombre\":\"Pluma negra\",\"precio\":12,\"cantidad\":1},{\"id\":3,\"nombre\":\"L\\u00e1piz del N\\u00ba2\",\"precio\":6,\"cantidad\":1}]', 18.00, '2025-12-10 14:37:04'),
-(13, '[{\"id\":7,\"nombre\":\"Pegamento en barra\",\"precio\":15,\"cantidad\":1},{\"id\":8,\"nombre\":\"Marcador negro\",\"precio\":18,\"cantidad\":1}]', 33.00, '2025-12-10 14:37:26'),
-(14, '[{\"id\":3,\"nombre\":\"L\\u00e1piz del N\\u00ba2\",\"precio\":6,\"cantidad\":1},{\"id\":4,\"nombre\":\"Borrador blanco\",\"precio\":10,\"cantidad\":1},{\"id\":8,\"nombre\":\"Marcador negro\",\"precio\":18,\"cantidad\":1},{\"id\":7,\"nombre\":\"Pegamento en barra\",\"precio\":15,\"cantidad\":2},{\"id\":6,\"nombre\":\"Regla 30 cm\",\"precio\":17,\"cantidad\":1},{\"id\":11,\"nombre\":\"Engrapadora mini\",\"precio\":32,\"cantidad\":1},{\"id\":14,\"nombre\":\"Cartulina blanca\",\"precio\":8,\"cantidad\":1}]', 121.00, '2025-12-10 14:38:41');
+(1, '[{\"id\":1,\"nombre\":\"Cuaderno profesional\",\"precio\":45,\"cantidad\":1},{\"id\":2,\"nombre\":\"Pluma negra\",\"precio\":12,\"cantidad\":1},{\"id\":3,\"nombre\":\"Lápiz del Nº2\",\"precio\":6,\"cantidad\":1}]', 63.00, '2025-12-10 15:45:49'),
+(2, '[{\"id\":3,\"nombre\":\"Lápiz del Nº2\",\"precio\":6,\"cantidad\":1},{\"id\":4,\"nombre\":\"Borrador blanco\",\"precio\":10,\"cantidad\":1}]', 16.00, '2025-12-10 16:54:07'),
+(3, '[{\"id\":\"2\",\"nombre\":\"Pluma negra\",\"precio\":12,\"cantidad\":2}]', 24.00, '2025-12-11 18:41:54');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `ventas`
@@ -72,7 +107,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
